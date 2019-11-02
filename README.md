@@ -1,4 +1,4 @@
-# Assignment 1: Portfolio
+# Portfolio
 
 Building a professional portfolio site using HTML and CSS with the given set of specifications and a style guide.
 
