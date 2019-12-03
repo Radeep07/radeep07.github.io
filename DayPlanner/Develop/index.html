@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+      integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
+      crossorigin="anonymous"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <title>Work Day Scheduler</title>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+  </head>
+
+  <body>
+    <header class="jumbotron">      
+      <h1 class="display-3">Work Day Scheduler</h1>
+      <p class="lead">A simple calendar app for scheduling your work day</p>
+      <p id="currentDay" class="lead"></p>     
+    </header>
+    <div class="container">
+      <div id="hour-9" value="09" class="row time-block">
+        <div class="col-md-1 hour">
+          09AM
+        </div>
+        <textarea class="col-md-10 description"></textarea>
+        <button class="btn col-md-1 saveBtn">save</button> 
+      </div>
+
+      <div id="hour-10" value="10" class="row time-block">
+        <div class="col-md-1 hour">
+          10AM
+        </div>
+        <textarea class="col-md-10 description"></textarea>
+        <button class="btn col-md-1 saveBtn">save</button> 
+      </div>
+
+      <div id="hour-11" value="11" class="row time-block">
+        <div class="col-md-1 hour">
+          11AM
+        </div>
+        <textarea class="col-md-10 description"></textarea>
+        <button class="btn col-md-1 saveBtn">save</button> 
+      </div>
+
+      <div id="hour-12" value="12" class="row time-block">
+        <div class="col-md-1 hour">
+          12PM
+        </div>
+        <textarea class="col-md-10 description"></textarea>
+        <button class="btn col-md-1 saveBtn">save</button> 
+      </div>
+
+      <div id="hour-13" value="13" class="row time-block">
+        <div class="col-md-1 hour">
+          1PM
+        </div>
+        <textarea class="col-md-10 description"></textarea>
+        <button class="btn col-md-1 saveBtn">save</button> 
+      </div>
+
+      <div id="hour-14" value="14" class="row time-block">
+        <div class="col-md-1 hour">
+          2PM
+        </div>
+        <textarea class="col-md-10 description"></textarea>
+        <button class="btn col-md-1 saveBtn">save</button> 
+      </div>
+
+      <div id="hour-15" value="15" class="row time-block">
+        <div class="col-md-1 hour">
+          3PM
+        </div>
+        <textarea class="col-md-10 description"></textarea>
+        <button class="btn col-md-1 saveBtn">save</button> 
+      </div>
+
+      <div id="hour-16" value="16" class="row time-block">
+        <div class="col-md-1 hour">
+          4PM
+        </div>
+        <textarea class="col-md-10 description"></textarea>
+        <button class="btn col-md-1 saveBtn">save</button> 
+      </div>
+
+      <div id="hour-17" value="17" class="row time-block">
+        <div class="col-md-1 hour">
+          5PM
+        </div>
+        <textarea class="col-md-10 description"></textarea>
+        <button class="btn col-md-1 saveBtn">save</button> 
+      </div>
+
+    </div>
+
+
+    <script type="text/javascript">
+      var tV=[];
+      var timeBlock=[];
+      var UserEvent=[];
+      var UserTime=[];
+      var nameE;
+      //<!-- Timeblocks go here -->
+      //printing the current date, month and year
+      var d = new Date();//variable to hold today's date
+      var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+      //document.getElementById("currentDay");
+      var newDiv = $("#currentDay");//using jquery      
+      //newDiv.textContent = d.getDate()+ + ", " + months[d.getMonth()] + " " + d.getFullYear();
+      newDiv.text(d.getDate() + ", " + months[d.getMonth()] + " " + d.getFullYear());//using jquery
+      $("#currentDay").append(newDiv);    
+      //console.log(d.getHours()); 
+      //setting the color coded time blocks indicating the time for the past present and future 
+      for(var i=0;i<9;i++){
+        timeBlock[i] = document.getElementsByClassName("time-block")[i].getAttribute("value");
+        if(parseInt(timeBlock[i])<d.getHours()){
+          //console.log("past");
+          document.getElementsByClassName("col-md-10 description")[i].style.backgroundColor ="#d3d3d3";
+          document.getElementsByClassName("col-md-10 description")[i].style.color="white";
+          } 
+        else if(parseInt(timeBlock[i])>d.getHours()) {
+          //console.log("future");
+          document.getElementsByClassName("col-md-10 description")[i].style.backgroundColor ="#77dd77";
+          document.getElementsByClassName("col-md-10 description")[i].style.color="white";
+        }
+        else{
+          //console.log("present");
+          document.getElementsByClassName("col-md-10 description")[i].style.backgroundColor ="#ff6961";
+          document.getElementsByClassName("col-md-10 description")[i].style.color="white";
+        }
+       
+      }//end of for loop
+
+    </script>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+  </body>
+</html>
