@@ -18,7 +18,7 @@
       href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="./Assets/style.css" />
+    <link rel="stylesheet" href="./CSS/style.css" />
     <title>Work Day Scheduler</title>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
   </head>
@@ -34,117 +34,133 @@
         <div class="col-md-1 hour">
           09AM
         </div>
-        <textarea class="col-md-10 description"></textarea>
-        <button class="btn col-md-1 saveBtn">save</button> 
+        <textarea class="col-md-10 description" dTime="09"></textarea>
+        <button class="btn col-md-1 saveBtn" value="09">save</button> 
       </div>
 
       <div id="hour-10" value="10" class="row time-block">
         <div class="col-md-1 hour">
           10AM
         </div>
-        <textarea class="col-md-10 description"></textarea>
-        <button class="btn col-md-1 saveBtn">save</button> 
+        <textarea class="col-md-10 description" dTime="10"></textarea>
+        <button class="btn col-md-1 saveBtn" value="10">save</button> 
       </div>
 
       <div id="hour-11" value="11" class="row time-block">
         <div class="col-md-1 hour">
           11AM
         </div>
-        <textarea class="col-md-10 description"></textarea>
-        <button class="btn col-md-1 saveBtn">save</button> 
+        <textarea class="col-md-10 description" dTime="11"></textarea>
+        <button class="btn col-md-1 saveBtn" value="11">save</button> 
       </div>
 
       <div id="hour-12" value="12" class="row time-block">
         <div class="col-md-1 hour">
           12PM
         </div>
-        <textarea class="col-md-10 description"></textarea>
-        <button class="btn col-md-1 saveBtn">save</button> 
+        <textarea class="col-md-10 description" dTime="12"></textarea>
+        <button class="btn col-md-1 saveBtn" value="12">save</button> 
       </div>
 
       <div id="hour-13" value="13" class="row time-block">
         <div class="col-md-1 hour">
           1PM
         </div>
-        <textarea class="col-md-10 description"></textarea>
-        <button class="btn col-md-1 saveBtn">save</button> 
+        <textarea class="col-md-10 description" dTime="13"></textarea>
+        <button class="btn col-md-1 saveBtn" value="13">save</button> 
       </div>
 
       <div id="hour-14" value="14" class="row time-block">
         <div class="col-md-1 hour">
           2PM
         </div>
-        <textarea class="col-md-10 description"></textarea>
-        <button class="btn col-md-1 saveBtn">save</button> 
+        <textarea class="col-md-10 description" dTime="14"></textarea>
+        <button class="btn col-md-1 saveBtn" value="14">save</button> 
       </div>
 
       <div id="hour-15" value="15" class="row time-block">
         <div class="col-md-1 hour">
           3PM
         </div>
-        <textarea class="col-md-10 description"></textarea>
-        <button class="btn col-md-1 saveBtn">save</button> 
+        <textarea class="col-md-10 description" dTime="15"></textarea>
+        <button class="btn col-md-1 saveBtn" value="15">save</button> 
       </div>
 
       <div id="hour-16" value="16" class="row time-block">
         <div class="col-md-1 hour">
           4PM
         </div>
-        <textarea class="col-md-10 description"></textarea>
-        <button class="btn col-md-1 saveBtn">save</button> 
+        <textarea class="col-md-10 description" dTime="16"></textarea>
+        <button class="btn col-md-1 saveBtn" value="16">save</button> 
       </div>
 
       <div id="hour-17" value="17" class="row time-block">
         <div class="col-md-1 hour">
           5PM
         </div>
-        <textarea class="col-md-10 description"></textarea>
-        <button class="btn col-md-1 saveBtn">save</button> 
+        <textarea class="col-md-10 description" dTime="17"></textarea>
+        <button class="btn col-md-1 saveBtn" value="17">save</button> 
       </div>
 
     </div>
 
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
     <script type="text/javascript">
-      var tV=[];
+      
       var timeBlock=[];
-      var UserEvent=[];
-      var UserTime=[];
-      var nameE;
-      //<!-- Timeblocks go here -->
-      //printing the current date, month and year
-      var d = new Date();//variable to hold today's date
-      var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-      //document.getElementById("currentDay");
+      var UserEvent=[];     
       var newDiv = $("#currentDay");//using jquery      
-      //newDiv.textContent = d.getDate()+ + ", " + months[d.getMonth()] + " " + d.getFullYear();
-      newDiv.text(d.getDate() + ", " + months[d.getMonth()] + " " + d.getFullYear());//using jquery
-      $("#currentDay").append(newDiv);    
-      //console.log(d.getHours()); 
+      let now = moment();
+      newDiv.text("Date:  "+ now.format("dddd, MMMM Do YYYY") + "  Time:  " + now.format("HH:mm:ss"));
+      //Details of current day with time using moment format
+      $("#currentDay").append(newDiv);  
+      var hoursNow=new Date();  //variable to capture current hour
       //setting the color coded time blocks indicating the time for the past present and future 
       for(var i=0;i<9;i++){
         timeBlock[i] = document.getElementsByClassName("time-block")[i].getAttribute("value");
-        if(parseInt(timeBlock[i])<d.getHours()){
-          //console.log("past");
+        if(parseInt(timeBlock[i])<hoursNow.getHours()){
+          //displaying as past hours of the day with the color coding
           document.getElementsByClassName("col-md-10 description")[i].style.backgroundColor ="#d3d3d3";
           document.getElementsByClassName("col-md-10 description")[i].style.color="white";
-         } 
-        else if(parseInt(timeBlock[i])>d.getHours()) {
-          //console.log("future");
+          } 
+        else if(parseInt(timeBlock[i])>hoursNow.getHours()) {
+          //displaying as future hours of the day with the color coding
           document.getElementsByClassName("col-md-10 description")[i].style.backgroundColor ="#77dd77";
           document.getElementsByClassName("col-md-10 description")[i].style.color="white";
         }
         else{
-          //console.log("present");
+          //displaying as present hour of the day with the color coding
           document.getElementsByClassName("col-md-10 description")[i].style.backgroundColor ="#ff6961";
           document.getElementsByClassName("col-md-10 description")[i].style.color="white";
         }
        
       }//end of for loop
-
-    </script>
-
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+      //Storing the planner events to local storage on save button click
+      var textInput=$(".description");
+      var saveB=$(".saveBtn").on("click",function(event){
+        event.preventDefault();
+        var timeOfEvent=$(this).attr("value"); 
+        var dayPlanned=new Date()       
+        for(var i=0;i<textInput.length;i++){
+          //object to store event information
+          if(textInput[i].getAttribute("dTime")==timeOfEvent){
+          var eventInfo={
+            "eventName" :textInput[i].value,
+            "eventTime" :timeOfEvent,
+            "dateOfDay" :dayPlanned.getDate()
+          }
+          if(textInput[i].value.trim()!=""){
+            UserEvent.push(eventInfo);
+            localStorage.setItem("planner",JSON.stringify(UserEvent));            
+          }
+          }
+        }
+      });
+      //render the stored tasks on the page refresh
+      for(var l=0;l<localStorage.length;l++){
+        //code has to be written
+      }
+      
+    </script> 
   </body>
 </html>
