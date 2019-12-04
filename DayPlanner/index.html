@@ -18,7 +18,7 @@
       href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="./Assets/style.css" />
     <title>Work Day Scheduler</title>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
   </head>
@@ -128,7 +128,7 @@
           //console.log("past");
           document.getElementsByClassName("col-md-10 description")[i].style.backgroundColor ="#d3d3d3";
           document.getElementsByClassName("col-md-10 description")[i].style.color="white";
-          } 
+         } 
         else if(parseInt(timeBlock[i])>d.getHours()) {
           //console.log("future");
           document.getElementsByClassName("col-md-10 description")[i].style.backgroundColor ="#77dd77";
