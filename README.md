@@ -1,4 +1,4 @@
-## Responsive Portfolio
+## Portfolio
 
 Responsive design ensures that web applications render well on a variety of devices and window or screen sizes. As a developer, I would likely be asked to create a mobile-first application or add responsive design to an existing application. This is why I stated working on 'Responsive Protfolio' which is cosidered to be an extension to my deployed portfolio design.
 
