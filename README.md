@@ -38,3 +38,5 @@ Note: The responsive design only deals with the current portfolio project (I des
 * Used enough comments for better readability of the code.
 
 * I worked for the possible enhacements using Bootstrap without changing much from my already deployed portfolio design (my previous project)
+
+* The link to the deployed application on GitHub pages [Ratna's Portfolio](https://radeep07.github.io/Portfolio_Ratna/)
